@@ -1,14 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class CalcTextField extends StatefulWidget {
-  const CalcTextField({super.key});
+class CalcTextField extends StatelessWidget {
+  final String input;
+  final String result;
 
-  @override
-  State<CalcTextField> createState() => _CalcTextFieldState();
-}
+  const CalcTextField({
+    super.key,
+    required this.input,
+    required this.result,
+  });
 
-class _CalcTextFieldState extends State<CalcTextField> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -21,16 +23,35 @@ class _CalcTextFieldState extends State<CalcTextField> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: AutoSizeText(
-                "12345",
+                input,
                 minFontSize: 20.0,
                 maxFontSize: 80.0,
                 maxLines: 1,
                 textAlign: TextAlign.right,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 80.0,
                   fontWeight: FontWeight.w300,
                   decoration: TextDecoration.none,
                   color: Colors.green,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            color: Colors.transparent,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: AutoSizeText(
+                result,
+                minFontSize: 20.0,
+                maxFontSize: 80.0,
+                maxLines: 1,
+                textAlign: TextAlign.right,
+                style: const TextStyle(
+                  fontSize: 80.0,
+                  fontWeight: FontWeight.w300,
+                  decoration: TextDecoration.none,
+                  color: Colors.grey,
                 ),
               ),
             ),
